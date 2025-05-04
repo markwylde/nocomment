@@ -9,7 +9,7 @@
     "url": "https://markwylde.com"
   },
   "engines": {
-    "vscode": "^1.60.0"
+    "vscode": "^1.99.0"
   },
   "categories": ["Other"],
   "activationEvents": ["onCommand:nocomment.removeComments"],
