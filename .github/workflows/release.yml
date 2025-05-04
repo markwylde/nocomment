@@ -32,9 +32,3 @@ jobs:
         run: |
           npm install -g @vscode/vsce
           vsce package
-
-      - name: Semantic Release
-        env:
-          GITHUB_TOKEN: ${{ secrets.GH_TOKEN }}
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
-        run: npx semantic-release
