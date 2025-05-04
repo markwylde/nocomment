@@ -1,0 +1,65 @@
+{
+  "name": "nocomment",
+  "displayName": "NoComment",
+  "description": "Remove comments from JS/TS files using AST parsing",
+  "version": "0.0.0-development",
+  "author": {
+    "name": "Mark Wylde",
+    "email": "mark@wylde.net",
+    "url": "https://markwylde.com"
+  },
+  "engines": {
+    "vscode": "^1.60.0"
+  },
+  "categories": ["Other"],
+  "activationEvents": ["onCommand:nocomment.removeComments"],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "nocomment.removeComments",
+        "title": "NoComment: Remove Comments from Current File"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile",
+    "test": "node ./out/test/runTest.js",
+    "semantic-release": "semantic-release",
+    "format": "biome format --write .",
+    "lint": "biome lint .",
+    "check": "biome check ."
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.9.4",
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^11.0.2",
+    "@semantic-release/npm": "^12.0.1",
+    "@semantic-release/release-notes-generator": "^14.0.3",
+    "@types/minimatch": "^5.1.2",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.15.3",
+    "@types/vscode": "^1.99.1",
+    "glob": "^11.0.2",
+    "minimatch": "^10.0.1",
+    "mocha": "^11.2.2",
+    "semantic-release": "^24.2.3",
+    "typescript": "^5.8.3",
+    "vscode-test": "^1.6.1"
+  },
+  "dependencies": {
+    "@typescript-eslint/typescript-estree": "^8.31.1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/markwylde/nocomment.git"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
