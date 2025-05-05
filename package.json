@@ -3,6 +3,8 @@
   "displayName": "NoComment",
   "description": "Remove comments from JS/TS files using AST parsing",
   "version": "1.0.0",
+  "publisher": "markwylde",
+  "icon": "logo.png",
   "author": {
     "name": "Mark Wylde",
     "email": "mark@wylde.net",
@@ -11,7 +13,12 @@
   "engines": {
     "vscode": "^1.99.0"
   },
-  "categories": ["Other"],
+  "categories": [
+    "Formatters",
+    "Programming Languages",
+    "Snippets",
+    "Other"
+  ],
   "activationEvents": ["onCommand:nocomment.removeComments"],
   "main": "./out/extension.js",
   "contributes": {
