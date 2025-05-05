@@ -32,10 +32,3 @@ This extension does not add any settings.
 
 - The extension will not work on files with syntax errors
 - In some rare cases, the removal of line comments that contain entire lines may affect blank line spacing
-
-## Release Notes
-
-### 0.1.0
-
-- Initial release
-- Support for removing comments from JS, JSX, TS, and TSX files
