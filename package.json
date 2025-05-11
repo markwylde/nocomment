@@ -11,7 +11,7 @@
     "url": "https://markwylde.com"
   },
   "engines": {
-    "vscode": "^1.50.0"
+    "vscode": "^1.95.0"
   },
   "categories": [
     "Formatters",
@@ -47,7 +47,7 @@
     "@types/minimatch": "^5.1.2",
     "@types/mocha": "^10.0.10",
     "@types/node": "^22.15.3",
-    "@types/vscode": "^1.99.1",
+    "@types/vscode": "^1.95.0",
     "@typescript-eslint/typescript-estree": "^8.31.1",
     "esbuild": "^0.25.3",
     "glob": "^11.0.2",
