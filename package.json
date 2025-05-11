@@ -2,7 +2,7 @@
   "name": "nocomment",
   "displayName": "NoComment",
   "description": "Remove comments from JS/TS files using AST parsing",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "publisher": "markwylde",
   "icon": "logo.png",
   "author": {
