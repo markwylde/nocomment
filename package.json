@@ -13,12 +13,7 @@
   "engines": {
     "vscode": "^1.95.0"
   },
-  "categories": [
-    "Formatters",
-    "Programming Languages",
-    "Snippets",
-    "Other"
-  ],
+  "categories": ["Formatters", "Programming Languages", "Snippets", "Other"],
   "main": "./out/extension.js",
   "activationEvents": [
     "onCommand:nocomment.removeComments",

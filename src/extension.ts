@@ -221,39 +221,82 @@ function removeComments(source: string, comments: Comment[]): string {
     return source;
   }
 
+  let lines = source.split('\n');
+  const lineInfo = lines.map(() => ({ hasComment: false, hasCode: false }));
+
+  for (const comment of comments) {
+    const startPos =
+      source.substring(0, comment.range[0]).split('\n').length - 1;
+    const endPos = source.substring(0, comment.range[1]).split('\n').length - 1;
+
+    for (let i = startPos; i <= endPos; i++) {
+      lineInfo[i].hasComment = true;
+
+      if (i === startPos) {
+        const beforeComment = source
+          .substring(
+            source.lastIndexOf('\n', comment.range[0] - 1) + 1,
+            comment.range[0]
+          )
+          .trim();
+
+        if (beforeComment) {
+          lineInfo[i].hasCode = true;
+        }
+      }
+
+      if (i === endPos && comment.type === 'Line') {
+        lineInfo[i].hasCode = false;
+      } else if (i === endPos) {
+        const afterComment = source
+          .substring(
+            comment.range[1],
+            source.indexOf('\n', comment.range[1]) === -1
+              ? source.length
+              : source.indexOf('\n', comment.range[1])
+          )
+          .trim();
+
+        if (afterComment) {
+          lineInfo[i].hasCode = true;
+        }
+      }
+
+      if (i > startPos && i < endPos) {
+        lineInfo[i].hasCode = false;
+      }
+    }
+  }
+
   const sortedComments = [...comments].sort((a, b) => b.range[0] - a.range[0]);
 
   let result = source;
 
   for (const comment of sortedComments) {
-    const [start, end] = comment.range;
-
-    if (comment.type === 'Line') {
-      let lineStart = start;
-      while (lineStart > 0 && result.charAt(lineStart - 1) !== '\n') {
-        lineStart--;
-      }
-
-      let lineEnd = end;
-      while (lineEnd < result.length && result.charAt(lineEnd) !== '\n') {
-        lineEnd++;
-      }
-
-      const lineContent = result.substring(lineStart, lineEnd).trim();
-
-      if (lineContent.startsWith('//')) {
-        if (lineStart === 0) {
-          result = result.substring(lineEnd + 1);
-        } else {
-          result = result.substring(0, lineStart) + result.substring(lineEnd);
-        }
-      } else {
-        result = result.substring(0, start) + result.substring(end);
-      }
-    } else {
-      result = result.substring(0, start) + result.substring(end);
-    }
+    result =
+      result.substring(0, comment.range[0]) +
+      result.substring(comment.range[1]);
   }
+
+  lines = result.split('\n');
+  const newLines = [];
+
+  for (let i = 0; i < lines.length; i++) {
+    if (
+      i < lineInfo.length &&
+      lineInfo[i].hasComment &&
+      !lineInfo[i].hasCode &&
+      !lines[i].trim()
+    ) {
+      continue;
+    }
+
+    newLines.push(lines[i]);
+  }
+
+  result = newLines.join('\n');
+
+  result = result.replace(/\n{3,}/g, '\n\n');
 
   return result;
 }
