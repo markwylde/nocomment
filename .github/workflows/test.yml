@@ -1,4 +1,4 @@
-name: Build and Release
+name: Test Build
 
 on:
   push:
@@ -6,8 +6,8 @@ on:
       - main
 
 jobs:
-  release:
-    name: Release
+  test-build:
+    name: Test Build
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
@@ -27,8 +27,3 @@ jobs:
 
       - name: Build Extension
         run: npm run vscode:prepublish
-
-      - name: Package Extension
-        run: |
-          npm install -g @vscode/vsce
-          vsce package
