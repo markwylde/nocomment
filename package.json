@@ -13,12 +13,7 @@
   "engines": {
     "vscode": "^1.95.0"
   },
-  "categories": [
-    "Formatters",
-    "Programming Languages",
-    "Snippets",
-    "Other"
-  ],
+  "categories": ["Formatters", "Programming Languages", "Snippets", "Other"],
   "main": "./out/extension.js",
   "activationEvents": [
     "onCommand:nocomment.removeComments",
@@ -43,9 +38,11 @@
     "watch": "npm run compile -- --watch",
     "pretest": "npm run compile",
     "test": "node ./out/test/runTest.js",
-    "format": "biome format --write .",
+    "format": "biome format .",
+    "format:fix": "biome format --write .",
     "lint": "biome lint .",
-    "check": "biome check ."
+    "lint:fix": "biome lint --write .",
+    "tidy": "npm run format:fix && npm run lint:fix"
   },
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
