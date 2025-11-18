@@ -52,7 +52,7 @@
     "@types/vscode": "^1.95.0",
     "@typescript-eslint/typescript-estree": "^8.32.1",
     "esbuild": "^0.25.4",
-    "glob": "^11.0.2",
+    "glob": "^11.1.0",
     "minimatch": "^10.0.1",
     "mocha": "^11.3.0",
     "typescript": "^5.8.3",
